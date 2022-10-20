@@ -1,19 +1,70 @@
 package com.tiernoparla.proyectos_esenciales;
 
+import java.util.Arrays;
 import java.util.Scanner;
-        
+import java.util.Random;
         
 public class proyectos_esenciales {
     
+    
+    public static boolean isPrime(int P){
+    
+    for(int i = 2; i< P; i++){
+            if(P % i == 0){
+                return false;
+            }//if
+        }//for
+    return true;
+    }//isPrime
+    
+    public static void printPrimosGemelos(int lim){
+        for(int i = 0; i < lim; i++){
+            if((i+2)<=lim){
+                if(isPrime(i) != false & (isPrime(i+2) != false)){
+                    System.out.println(i + " y " + (i+2) + " son números primos gemelos");
+                }//if 2
+            }//if 1
+        }//for
+    }
+    public static void isConsecutive(int[] n){
+    
+        if(n[0]+1==n[1] & n[0]+2==n[2]){
+            System.out.println("SI son consecutivos");
+        }//if
+        else{
+            System.out.println("NO son consecutivos");
+        }//else
+    }//psv
+    
+    public static void isPar(int N){
+        int cap = 200;//capacidas del array
+        int[] S = new int[cap];//array que guarda los digitos de N por separado
+        for(int i = 0; i < cap; i++){
+            S[i] = N % 10;
+            N = N / 10;
+            if(S[i]%2!=0){
+                System.out.println("El digito "+ S[i] +" NO es par");
+                break;
+            }//if 1
+            if(N==0){
+                break;
+            }//if 2
+        }//for
+        System.out.println("d");
+    }//psv
+    
+    
     public static void main(String[] args) {
 
+                
+        
         
         //números pares del 1 al 10
         /*
-        //números del 1 al 10 pero de otra forma
-        for(int n = 1; n <=10; n++){
-            if(n%2==0){
-                System.out.println(n);
+        //números pares del 1 al 10
+        for(int i = 1; i <=10; i++){
+            if(i%2==0){
+                System.out.println(i);
             }//if
         }//for
         */
@@ -42,7 +93,7 @@ public class proyectos_esenciales {
         
         
         
-        //Números de fibonach (machacar variables.
+        //Números de fibonach (machacar variables).
         /*
         int num = 55;//cuantos números quiero que saque el código
         int x1 =1, x2 = 1;
@@ -57,16 +108,7 @@ public class proyectos_esenciales {
         
         
         
-        /*arrays: son colecciones de datos, una lista de tamao fijo vaya.
-        String hace que la array sea solo para letras, 
-        para números susar por ejemplo int y recordar q int no usa comillas
-        
-        String[] p={"uno"/*este es el sitio cero*//*,"dos" /*este es el 
-        sitio uno y así};
-        System.out.println(p[0]);
-        System.out.println(p[1]);
-        */
-        //calcular termino n de fibonacci con arraysnen vez de x1, x2 y suma
+        //calcular termino n de fibonacci con arrays en vez de x1, x2 y suma
         /*
         int num = 5;
         int[] x={1,1,0};
@@ -160,19 +202,6 @@ public class proyectos_esenciales {
         
         
         
-        //Método que diga si un año es bisiesto
-        /*
-        int año=2004;
-        if(año%4==0){
-            System.out.println("SI es bisiesto");
-        }//if
-        if(año%4!=0){
-            System.out.println("NO es bisiesto");
-        }
-        */
-        
-        
-        
         //números capiúa
         /*
         int n=1551;
@@ -210,7 +239,7 @@ public class proyectos_esenciales {
         
         //Cálculo que calcule la media de x números(user input?)
         /*
-        double[] n={1, 2, 3, 4};
+        double[] n = {1, 2, 3, 4};
         double alln=0;
         double media;
         for(int i = 0; i<n.length; i++){
@@ -239,30 +268,12 @@ public class proyectos_esenciales {
         
         
         
-        //suma de digitos de un número entero
-        /*
-        int n=223;
-        int tmp=n;
-        int cifra;
-        int r=0;
-        while (tmp>0){
-            cifra=tmp%10;
-            r=r + cifra;
-            tmp = tmp/10;
-        }//while
-        System.out.println(r);
-        }
-        */
-        
-        
-        
         //contar las vocales que hay en una String
         /*
         String p="Abcdefghijklmnñopqrstuvwxyz";
-        
         int c=0;
         for(int i=0; i < p.length(); i++){
-            char tmp = Character.toLowerCase(p.charAt(i));
+            char tmp = Character.toLowerCase(p.charAt(i));//asi tambien se cuentan las mayusculas
             if(tmp=='a'||tmp=='e'||tmp=='i'||tmp=='o'||tmp=='u'){
                 c++;
             }//if
@@ -272,8 +283,138 @@ public class proyectos_esenciales {
         
         
         
+        //Contar palabras de una string
+        /*
+        String p="Salimos a las ocho";
+        p = p.trim();
+        String[] palabras = p.split("\\s+");
+            System.out.println(palabras.length);
+        */
+        
+        
+        
+        //suma de digitos de un número entero
+        /*
+        int n=123456789;
+        int cifra;
+        int r=0;
+        while (n>0){
+            cifra = n%10;
+            r=r + cifra;
+            n = n/10;
+        }//while
+        System.out.println(r);
+        }
+        */
+        
+        
+        //método que calcule valor que da un interés durante X años
+        /*
+        double x = 100;  //inicio
+        double I = 100;  //interes
+        double y = 5;  //años
+        for(int i=0; i<y; i++){
+            x = x + x * (I/100);
+        }
+        System.out.println((double)Math.round(x * 100) / 100);        
+        */
+        
+        
+        
+        //Calculo que diga si un año es bisiesto
+        /*
+        int año=2024;
+        if(año%4==0 & año%100!=0 || año%400==0){
+            System.out.println("SI es bisiesto");
+        }//if
+        else{
+            System.out.println("NO es bisiesto");
+        }
+        */
+        
+        
+        
+        //Password de 10 caracteres con solo letras y minimo dos números
+        /*
+        String pass="espanya2313";
+        boolean pass_ok = true;
+        if(pass.length() < 10){
+            pass_ok = false;
+        }//if
+        if(!pass.matches("[a-zA-Z0-9]*")){
+            pass_ok = false;
+        }//if
+        int counter=0;
+        for(char c: pass.toCharArray()){
+            if(Character.isDigit(c)){
+                counter++;
+            }
+        }
+        if(counter < 2){
+            pass_ok = false;
+        }
+        if(pass_ok){
+            System.out.println("el password está ok");
+        }
+        else{
+            System.out.println("el password está mal");
+        }
+        */
+        
+        
+        //ejemplo de una matriz de strings.
+        /*
+        String[][] str_matrix = {
+            {"sdgsds", "gdknbfb"},
+            {"eokboovf", "ehnbeiknb", "fbwsbt"},
+            {"grenvifn", "nbkfob"}
+        };
+        String[][]  str_II = new String[5][6];
+        System.out.println(str_matrix[2][2]);
+        */
+        
+        
+        
+        //metodo que le das un N, y dibuja por pantalla una matriz NxN de 0's y 1's aleatorios.
+        /*
+        int n = 5;
+        int[][] matrix = new int[n][n];
+        
+        Random rnd = new Random();
+        for(int i = 0; i < matrix.length; i++){   
+            for(int j = 0; j < matrix[i].length; j++){
+                matrix[i][j] = (rnd.nextBoolean()) ? 1 : 0;
+            }//for j
+        }//for i
+        for(int[] arr: matrix){
+            System.out.println(Arrays.toString(arr));
+        }//for
+        */
+        
+        //metodo que calcule todos los numeros primos gemelos hasta un N dado
+        /*
+        int lim= 50;
+        printPrimosGemelos(lim);
+        */
+        
+        
+        
+        //método que le metes N númeors y te dice si son consecutivos o no
+        /*
+        int[] n={1, 2, 3};
+        isConsecutive(n);
+        */
+        
+        
+        
+        //método que diga si todos los dígitos de un número son pares
+        /*
+        int N = 256446;
+        isPar(N);
+        */
+        
         //
-        /**/
-        /**/
+        /*
+        */
     }//main
 }//public class
